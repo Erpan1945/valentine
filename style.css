@@ -1,0 +1,84 @@
+/* Menggunakan font 'Poppins' sebagai prioritas utama, lalu 'Arial' sebagai cadangan */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9e3e3;
+    flex-direction: column;
+}
+
+/* Menengahkan seluruh konten */
+.container {
+    text-align: center;
+}
+
+/* Styling untuk halaman utama (pertanyaan Valentine) */
+h1 {
+    font-size: 2.5em;
+    color: #d32f2f; /* Warna merah untuk efek romantis */
+}
+
+/* Posisi tombol */
+.buttons {
+    margin-top: 20px;
+}
+
+/* Styling untuk tombol 'Yes' */
+.yes-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #4caf50; /* Warna hijau untuk tombol Yes */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Animasi saat tombol ditekan */
+}
+
+/* Styling untuk tombol 'No' */
+.no-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    background-color: #f44336; /* Warna merah untuk tombol No */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Efek saat tombol 'Yes' ditekan (memperbesar tombol sedikit) */
+.yes-button:active {
+    transform: scale(1.1);
+}
+
+/* Styling untuk gambar GIF */
+.gif_container img {
+    max-width: 100%; /* Agar tidak melebihi ukuran kontainer */
+    height: auto;
+    border-radius: 10px; /* Membuat sudut gambar sedikit melengkung */
+    margin-top: 20px;
+}
+
+/* Styling untuk halaman 'Yes' */
+.header_text {
+    font-size: 3em;
+    color: #d32f2f;
+    cursor: pointer; /* Membuat teks bisa diklik sebagai tombol restart */
+    transition: color 0.3s ease;
+}
+
+/* Efek hover saat kursor berada di teks header */
+.header_text:hover {
+    color: #ff4d6d; /* Warna berubah saat hover */
+}
+
+/* Mengatur ukuran maksimal GIF di halaman 'Yes' */
+.gif_container img {
+    width: 100%;
+    max-width: 500px; /* Membatasi ukuran agar tidak terlalu besar */
+    height: auto;
+}

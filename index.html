@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+
+    <!-- Menggunakan font Poppins dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Menghubungkan file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Halaman Pertama: Pertanyaan Valentine -->
+    <div class="container" id="valentinePage">
+        <h1>Will you be my Valentine?</h1>
+
+        <!-- Tombol Yes & No -->
+        <div class="buttons">
+            <button class="yes-button" onclick="showYesPage()">Yes</button>  <!-- Jika ditekan, akan menampilkan halaman Yes -->
+            <button class="no-button" onclick="handleNoClick()">No</button>  <!-- Jika ditekan, teks berubah dan tombol Yes membesar -->
+        </div>
+
+        <!-- GIF untuk halaman pertanyaan -->
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" 
+                 alt="Cute GIF">
+        </div>
+    </div>
+
+    <!-- Halaman Kedua: Jika memilih 'Yes' -->
+    <div class="container" id="yesPage" style="display: none;">
+        <!-- Judul ini bisa diklik untuk merestart halaman -->
+        <h1 class="header_text" onclick="restart()">Knew you would say yes!</h1>
+
+        <!-- GIF untuk halaman Yes -->
+        <div class="gif_container">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+        </div>
+    </div>
+
+    <!-- Menghubungkan file JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
