@@ -12,7 +12,20 @@ body {
 
 /* Menengahkan seluruh konten */
 .container {
+    
     text-align: center;
+    display: none;
+}
+
+.container {
+    text-align: center;
+    display: none; /* Awalnya tersembunyi */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.container.show {
+    display: block;
+    opacity: 1;
 }
 
 /* Styling untuk halaman utama (pertanyaan Valentine) */
@@ -36,7 +49,7 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out; /* Animasi saat tombol ditekan */
+    transition: transform 0.1s ease-in-out; /* Animasi saat tombol ditekan */
 }
 
 /* Styling untuk tombol 'No' */
@@ -82,3 +95,10 @@ h1 {
     max-width: 500px; /* Membatasi ukuran agar tidak terlalu besar */
     height: auto;
 }
+
+#yesPage {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
