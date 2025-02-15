@@ -13,6 +13,10 @@
 </head>
 <body>
 
+    <audio class="music" autoplay loop>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
+
     <!-- Halaman Pertama: Pertanyaan Valentine -->
     <div class="container" id="valentinePage">
         <h1>Will you be my Valentine?</h1>
@@ -33,7 +37,9 @@
     <!-- Halaman Kedua: Jika memilih 'Yes' -->
     <div class="container" id="yesPage" style="display: none;">
         <!-- Judul ini bisa diklik untuk merestart halaman -->
-        <h1 class="header_text" onclick="restart()">Knew you would say yes!</h1>
+        <!-- <h1 class="header_text" onclick="restart()">Sedang dikirim hehe</h1> -->
+
+        <h1 class="header_text" onclick="redirectToWhatsApp()">Sedang dikirim hehe</h1>
 
         <!-- GIF untuk halaman Yes -->
         <div class="gif_container">
@@ -41,6 +47,8 @@
         </div>
     </div>
 
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Menghubungkan file JavaScript -->
     <script src="script.js"></script>
 
