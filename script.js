@@ -1,66 +1,112 @@
-// Array pesan yang akan ditampilkan saat tombol "No" ditekan
+window.addEventListener('load', () => {
+    Swal.fire({
+        title: 'Do you wanna play music in the background?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.querySelector('.music').play(); 
+        }
+
+        // Tampilkan container dengan efek transisi
+        const container = document.querySelector('.container');
+        container.style.display = 'block';
+        setTimeout(() => {
+            container.style.opacity = '1';
+        }, 50);
+    });
+
+    // Tambahkan event listener untuk tombol "No"
+    const noButton = document.querySelector('.no-button');
+    if (noButton) {
+        noButton.addEventListener('click', handleNoClick);
+    } else {
+        console.error("Tombol 'No' tidak ditemukan!");
+    }
+
+    // Tambahkan event listener untuk tombol "Yes"
+    const yesButton = document.querySelector('.yes-button');
+    if (yesButton) {
+        yesButton.addEventListener('click', showYesPage);
+    } else {
+        console.error("Tombol 'Yes' tidak ditemukan!");
+    }
+});
+
 const messages = [
-    "Are you sure?",                    // Pesan pertama
-    "Really sure??",                     // Pesan kedua
-    "Are you positive?",                  // Pesan ketiga
-    "Pookie please...",                   // Pesan keempat (lebih emosional)
-    "Just think about it!",                // Pesan kelima (membujuk)
-    "If you say no, I will be really sad...",  // Pesan keenam (mulai sedih)
-    "I will be very sad...",               // Pesan ketujuh (lebih sedih)
-    "I will be very very very sad...",      // Pesan kedelapan (drama meningkat)
-    "Ok fine, I will stop asking...",       // Pesan kesembilan (berpura-pura menyerah)
-    "Just kidding, say yes please! ❤️"      // Pesan kesepuluh (kembali membujuk)
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
 ];
 
-// Variabel untuk melacak indeks pesan yang sedang digunakan
 let messageIndex = 0;
 
-/**
- * Fungsi yang dijalankan ketika tombol "No" ditekan.
- * - Mengubah teks tombol "No" ke pesan berikutnya dalam array `messages`.
- * - Memperbesar ukuran tombol "Yes" setiap kali tombol "No" ditekan.
- */
 function handleNoClick() {
-    const noButton = document.querySelector('.no-button');  // Ambil elemen tombol "No"
-    const yesButton = document.querySelector('.yes-button'); // Ambil elemen tombol "Yes"
+    const noButton = document.querySelector('.no-button');
+    const yesButton = document.querySelector('.yes-button');
 
-    // Ubah teks tombol "No" ke pesan berikutnya dalam array
+    if (!noButton || !yesButton) {
+        console.error("Tombol 'No' atau 'Yes' tidak ditemukan!");
+        return;
+    }
+
     noButton.textContent = messages[messageIndex];
-
-    // Perbarui indeks pesan, jika sudah mencapai akhir, kembali ke awal (looping)
     messageIndex = (messageIndex + 1) % messages.length;
 
-    // Ambil ukuran font tombol "Yes" saat ini
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-
-    // Perbesar ukuran tombol "Yes" sebesar 1.5x setiap kali tombol "No" ditekan
     yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
 
-/**
- * Fungsi yang dijalankan saat tombol "Yes" ditekan.
- * - Menyembunyikan halaman utama.
- * - Menampilkan halaman "Yes".
- */
 function showYesPage() {
-    document.getElementById("valentinePage").style.display = "none"; // Sembunyikan halaman utama
-    document.getElementById("yesPage").style.display = "block"; // Tampilkan halaman "Yes"
+    const valentinePage = document.getElementById("valentinePage");
+    const yesPage = document.getElementById("yesPage");
+
+    if (!valentinePage || !yesPage) {
+        console.error("Halaman 'valentinePage' atau 'yesPage' tidak ditemukan!");
+        return;
+    }
+
+    valentinePage.style.opacity = "0"; // Hilangkan dengan transisi
+    setTimeout(() => {
+        valentinePage.style.display = "none"; // Sembunyikan setelah transisi selesai
+        yesPage.style.display = "block";
+        setTimeout(() => {
+            yesPage.style.opacity = "1";
+        }, 10);
+    }, 500);
 }
 
-/**
- * Fungsi untuk mereset halaman kembali ke kondisi awal.
- * - Menampilkan kembali halaman utama.
- * - Menyembunyikan halaman "Yes".
- * - Mengembalikan ukuran tombol "Yes" ke ukuran awal.
- * - Mengembalikan teks tombol "No" ke "No".
- * - Mereset indeks pesan agar mulai dari awal.
- */
 function restart() {
-    document.getElementById("valentinePage").style.display = "block"; // Tampilkan kembali halaman utama
-    document.getElementById("yesPage").style.display = "none"; // Sembunyikan halaman "Yes"
+    const valentinePage = document.getElementById("valentinePage");
+    const yesPage = document.getElementById("yesPage");
+    const yesButton = document.querySelector(".yes-button");
+    const noButton = document.querySelector(".no-button");
 
-    document.querySelector(".yes-button").style.fontSize = "1.5em"; // Reset ukuran tombol "Yes"
-    document.querySelector(".no-button").textContent = "No"; // Reset teks tombol "No"
-    
-    messageIndex = 0; // Reset indeks pesan agar kembali ke awal
+    if (!valentinePage || !yesPage || !yesButton || !noButton) {
+        console.error("Elemen halaman atau tombol tidak ditemukan!");
+        return;
+    }
+
+    valentinePage.style.display = "block";
+    yesPage.style.display = "none";
+
+    yesButton.style.fontSize = "1.5em";
+    noButton.textContent = "No";
+    messageIndex = 0;
+}
+
+function redirectToWhatsApp() {
+    window.location.href = "https://wa.me/+6285733570608";
 }
